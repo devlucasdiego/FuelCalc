@@ -112,6 +112,7 @@
         android:layout_marginTop="40dp"
         android:text="É melhor combustível"
         android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnVerificar" />
 
