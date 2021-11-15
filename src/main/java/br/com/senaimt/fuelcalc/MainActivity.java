@@ -27,23 +27,28 @@ public class MainActivity extends AppCompatActivity {
         btnVerificar = findViewById(R.id.btnVerificar);
         txtResultado = findViewById(R.id.txtResultado);
 
-        try {
-            String valorAlcool = txtValorAlcool.getText().toString();
-            String valorGasolina = txtValorGasolina.getText().toString();
-            float convertAlcool = Float.parseFloat(valorAlcool);
-            float convertGasolina = Float.parseFloat(valorGasolina);
+        btnVerificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    String valorAlcool = txtValorAlcool.getText().toString().replace(",", ".");
+                    String valorGasolina = txtValorGasolina.getText().toString().replace(",", ".");
+                    ;
+                    float convertAlcool = Float.parseFloat(valorAlcool);
+                    float convertGasolina = Float.parseFloat(valorGasolina);
 
-            float resultado = convertAlcool / convertGasolina;
-            if (resultado < 0.7) {
-                mensagem = "É melhor abastecer com Álcool!";
-            } else {
-                mensagem = "É melhor abastecer com Gasolina!";
+                    float resultado = convertAlcool / convertGasolina;
+                    if (resultado < 0.7) {
+                        mensagem = "É melhor abastecer com Álcool!";
+                    } else {
+                        mensagem = "É melhor abastecer com Gasolina!";
+                    }
+                    txtResultado.setText(mensagem);
+                    txtResultado.setVisibility(View.VISIBLE);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Valor incorreto!", Toast.LENGTH_LONG);
+                }
             }
-            txtResultado.setText(mensagem);
-            txtResultado.setVisibility(View.VISIBLE);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Valor incorreto!", Toast.LENGTH_LONG);
-        }
-
+        });
     }
 }
